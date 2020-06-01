@@ -7,10 +7,8 @@ metadata:
     app: broken-pod-no-command
 spec:
   containers:
-    - image: busybox
-      # command:
-      #   - sleep
-      #   - "3600"
+    # this container has no command or entrypoint specified
+    - image: mstormo/suse
       imagePullPolicy: IfNotPresent
-      name: busybox
+      name: no-command
   restartPolicy: Always
