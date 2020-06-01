@@ -2,15 +2,15 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: simple-busybox
+  name: broken-pod-no-command
   labels:
-    app: simple-busybox
+    app: broken-pod-no-command
 spec:
   containers:
     - image: busybox
-      command:
-        - sleep
-        - "3600"
+      # command:
+      #   - sleep
+      #   - "3600"
       imagePullPolicy: IfNotPresent
       name: busybox
   restartPolicy: Always
