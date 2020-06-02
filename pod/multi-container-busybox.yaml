@@ -3,20 +3,15 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: multi-container-busybox
-  labels:
-    app: multi-container-busybox
 spec:
   containers:
     - image: busybox
       command:
         - sleep
         - "3600"
-      imagePullPolicy: IfNotPresent
       name: busybox1
     - image: busybox
       command:
         - sleep
         - "3601"
-      imagePullPolicy: IfNotPresent
       name: busybox2
-  restartPolicy: Always
