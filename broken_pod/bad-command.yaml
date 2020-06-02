@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: bad-command
+spec:
+  containers:
+    - image: busybox
+      command:
+        - thiscommanddoesnotexist
+      name: busybox

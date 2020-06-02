@@ -3,12 +3,8 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: broken-pod-no-command
-  labels:
-    app: broken-pod-no-command
 spec:
   containers:
     # this container has no command or entrypoint specified
     - image: mstormo/suse
-      imagePullPolicy: IfNotPresent
       name: no-command
-  restartPolicy: Always
