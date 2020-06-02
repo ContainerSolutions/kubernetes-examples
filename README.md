@@ -1,8 +1,8 @@
-= Kubernetes Examples
+# Kubernetes Examples
 
 A reference repository of YAML with canonical and as-simple-as-possible demonstrations of kubernetes functionality and features.
 
-== Why?
+## Why?
 
 I often find myself needing a chunk of yaml to hand to do demonstrate something specific, such as:
 
@@ -14,7 +14,7 @@ I often find myself needing a chunk of yaml to hand to do demonstrate something 
 
 This might be to do a basic test of an env, find an example to tinker with, or send to someone to get them going.
 
-== Sections
+## Sections
 
 broken-pods - yamls that create pods in various broken states
 
