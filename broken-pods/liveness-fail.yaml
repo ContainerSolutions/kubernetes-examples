@@ -10,7 +10,7 @@ spec:
       args:
         - /bin/sh
         - -c
-        # - touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600
+        - sleep 3600
       livenessProbe:
         exec:
           command:
