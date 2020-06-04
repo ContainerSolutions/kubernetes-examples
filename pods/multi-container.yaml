@@ -2,16 +2,16 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: multi-container-busybox
+  name: pods-multi-container-pod
 spec:
   containers:
     - image: busybox
       command:
         - sleep
         - "3600"
-      name: busybox1
+      name: pods-multi-container-container1
     - image: busybox
       command:
         - sleep
         - "3601"
-      name: busybox2
+      name: pods-multi-container-container2

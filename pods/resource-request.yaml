@@ -2,10 +2,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: liveness-exec
+  name: pods-resource-request-pod
 spec:
   containers:
-    - name: liveness
+    - name: pods-resource-request-container
       image: busybox
       args:
         - sleep

@@ -1,0 +1,17 @@
+---
+# https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/ claims that this invoked the OOM killer, but it runs fine on MicroK8s?
+apiVersion: v1
+kind: Pod
+metadata:
+  name: broken-pods-oom-killed-pod
+spec:
+  containers:
+    - args: ["--vm", "1", "--vm-bytes", "250M", "--vm-hang", "1"]
+      command: ["stress"]
+      image: polinux/stress
+      name: broken-pods-oom-killed-container
+      resources:
+        limits:
+          memory: "100Mi"
+        requests:
+          memory: "50Mi"

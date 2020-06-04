@@ -2,15 +2,14 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: broken-pod-liveness-fail
+  name: broken-pods-liveness-fail-pod
 spec:
   containers:
-    - name: liveness
-      image: busybox
-      args:
+    - args:
         - /bin/sh
         - -c
-        - sleep 3600
+        - "sleep 3600"
+      image: busybox
       livenessProbe:
         exec:
           command:
@@ -18,3 +17,4 @@ spec:
             - /tmp/healthy
         initialDelaySeconds: 5
         periodSeconds: 5
+      name: broken-pods-liveness-fail-container

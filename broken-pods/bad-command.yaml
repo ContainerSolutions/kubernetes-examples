@@ -2,10 +2,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: bad-command
+  name: broken-pods-bad-command-pod
 spec:
   containers:
-    - image: busybox
-      command:
+    - command:
         - thiscommanddoesnotexist
-      name: busybox
+      image: busybox
+      name: broken-pods-bad-command-container
