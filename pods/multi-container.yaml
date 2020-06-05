@@ -9,9 +9,9 @@ spec:
       command:
         - sleep
         - "3600"
-      name: pods-multi-container-container1
+      name: pods-multi-container-container-1
     - image: busybox
       command:
         - sleep
         - "3601"
-      name: pods-multi-container-container2
+      name: pods-multi-container-container-2
