@@ -14,8 +14,8 @@ spec:
         app: simple-deployment-app
     spec:
       containers:
-      - name: busybox
-        image: busybox
-        command:
-          - sleep
-          - "3600"
+        - name: busybox
+          image: busybox
+          command:
+            - sleep
+            - "3600"
