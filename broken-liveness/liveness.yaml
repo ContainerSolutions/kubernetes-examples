@@ -2,14 +2,14 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: pods-resource-request-pod
+  name: broken-liveness-pod
 spec:
   containers:
-    - name: pods-resource-request-container
+    - args:
+        - /bin/sh
+        - -c
+        - "sleep 3600"
       image: busybox
-      args:
-        - sleep
-        - "600"
       livenessProbe:
         exec:
           command:
@@ -17,7 +17,4 @@ spec:
             - /tmp/healthy
         initialDelaySeconds: 5
         periodSeconds: 5
-      resources:
-        requests:
-          memory: "20000Mi"
-          cpu: "99999m"
+      name: broken-liveness-container

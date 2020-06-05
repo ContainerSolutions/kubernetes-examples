@@ -23,3 +23,5 @@ This might be to do a basic test of an env, find an example to tinker with, or s
 ## Sources
 
 [Official Kubernetes docs](https://kubernetes.io/docs/)
+
+[Kubernetes by Example](https://kubernetesbyexample.com/)

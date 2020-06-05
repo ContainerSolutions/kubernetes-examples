@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: broken-init-container-pod
+spec:
+  containers:
+    - name: broken-init-container-container
+      image: busybox
+      command: ['sh', '-c', 'echo The app is running! && sleep 3600']
+  initContainers:
+    - name: broken-init-container-init-container
+      image: busybox
+      command: ['sh', '-c', "until nslookup pods-init-container-service-nonexistent.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for myservice; sleep 2; done"]

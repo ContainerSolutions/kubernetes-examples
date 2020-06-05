@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: pods-lifecycle-pod
+  name: lifecycle-pod
 spec:
   containers:
     - image: nginx
@@ -13,4 +13,4 @@ spec:
         preStop:
           exec:
             command: ["/bin/sh", "-c", "nginx -s quit; while killall -0 nginx; do sleep 1; done"]
-      name: pods-lifecycle-container
+      name: lifecycle-container

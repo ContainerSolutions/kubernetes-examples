@@ -3,7 +3,7 @@
 kind: Pod
 apiVersion: v1
 metadata:
-  name: pods-topology-spread-constraints-pod
+  name: topology-spread-constraints-pod
   labels:
     label1: value1
 spec:
