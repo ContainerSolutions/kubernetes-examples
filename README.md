@@ -16,9 +16,7 @@ This might be to do a basic test of an env, find an example to tinker with, or s
 
 ## Sections
 
-`broken-pods` - yamls that create pods in various broken states
-
-`pods` - yamls that create pods
+`broken-*` - yamls that exemplify broken kubernetes yaml states
 
 ## Sources
 
