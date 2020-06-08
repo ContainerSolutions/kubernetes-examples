@@ -1,0 +1,19 @@
+---
+# https://kubernetes.io/docs/concepts/services-networking/service-topology/#prefer-node-local-zonal-then-regional-endpoints
+# A Service that prefers node local, zonal, then regional endpoints but falls back to cluster wide endpoints.
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-topolgies-fallback-service
+spec:
+  selector:
+    app: my-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9376
+  topologyKeys:
+    - "kubernetes.io/hostname"
+    - "topology.kubernetes.io/zone"
+    - "topology.kubernetes.io/region"
+    - "*"
