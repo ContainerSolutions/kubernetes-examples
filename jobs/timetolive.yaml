@@ -1,5 +1,5 @@
 ---
-# https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+# https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
 apiVersion: batch/v1
 kind: Job
 metadata:

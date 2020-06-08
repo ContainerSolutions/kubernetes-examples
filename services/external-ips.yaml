@@ -1,5 +1,5 @@
 ---
-# https://kubernetes.io/docs/concepts/services-networking/service/#external-ips
+# https://kubernetes.io/docs/concepts/services-networking/service/#external-ips
 apiVersion: v1
 kind: Service
 metadata:

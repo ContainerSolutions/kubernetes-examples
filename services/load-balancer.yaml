@@ -1,5 +1,5 @@
 ---
-# https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer
+# https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer
 apiVersion: v1
 kind: Service
 metadata:
@@ -16,4 +16,4 @@ spec:
 status:
   loadBalancer:
     ingress:
-    - ip: 192.0.2.127
+      - ip: 192.0.2.127

@@ -13,8 +13,8 @@ spec:
       readinessProbe:
         exec:
           command:
-          - cat
-          - /tmp/healthy
+            - cat
+            - /tmp/healthy
         initialDelaySeconds: 5
         periodSeconds: 5
       name: broken-readiness-container

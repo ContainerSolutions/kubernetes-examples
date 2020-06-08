@@ -1,5 +1,5 @@
 ---
-# https://kubernetes.io/docs/concepts/services-networking/service/#nodeport
+# https://kubernetes.io/docs/concepts/services-networking/service/#nodeport
 apiVersion: v1
 kind: Service
 metadata:
@@ -9,7 +9,7 @@ spec:
   selector:
     app: MyApp
   ports:
-      # By default and for convenience, the `targetPort` is set to the same value as the `port` field.
+    # By default and for convenience, the `targetPort` is set to the same value as the `port` field.
     - port: 80
       targetPort: 80
       # Optional field

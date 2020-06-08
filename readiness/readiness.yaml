@@ -13,7 +13,7 @@ spec:
       readinessProbe:
         exec:
           command:
-          - cat
-          - /tmp/healthy
+            - cat
+            - /tmp/healthy
         initialDelaySeconds: 5
       name: pods-readiness-exec-container

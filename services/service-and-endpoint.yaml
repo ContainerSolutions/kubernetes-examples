@@ -1,5 +1,5 @@
 ---
-# https://kubernetes.io/docs/concepts/services-networking/service/#services-without-selectors
+# https://kubernetes.io/docs/concepts/services-networking/service/#services-without-selectors
 apiVersion: v1
 kind: Service
 metadata:
