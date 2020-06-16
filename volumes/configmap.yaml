@@ -6,10 +6,13 @@ metadata:
   name: volumes-configmap-pod
 spec:
   containers:
-    - name: test
+    - command:
+        - sleep
+        - "3600"
       image: busybox
+      name: volumes-configmap-pod-container
       volumeMounts:
-        - name: config-vol
+        - name: volumes-configmap-volume
           mountPath: /etc/config
   volumes:
     - name: volumes-configmap-volume
@@ -17,7 +20,7 @@ spec:
         name: volumes-configmap-configmap
         items:
           - key: game.properties
-            path: /volumes/configmap-volume-path
+            path: configmap-volume-path
 ---
 apiVersion: v1
 kind: ConfigMap
