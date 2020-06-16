@@ -16,5 +16,5 @@ spec:
   volumes:
     - hostPath:
         # directory location on host
-        path: /data
+        path: /tmp
       name: volumes-hostdir-volume
