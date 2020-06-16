@@ -3,14 +3,13 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: pi-with-timeout
+  name: jobs-timeout-job
 spec:
   activeDeadlineSeconds: 100
-  backoffLimit: 5
   template:
     spec:
       containers:
         - command: ["perl", "-Mbignum=bpi", "-wle", "print bpi(2000)"]
           image: perl
-          name: pi
+          name: jobs-timeout-container
       restartPolicy: Never
