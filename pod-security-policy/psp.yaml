@@ -1,4 +1,9 @@
 ---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: pod-security-policy-psp-namespace
+---
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:
@@ -15,3 +20,51 @@ spec:
     rule: RunAsAny
   volumes:
     - '*'
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: pod-security-policy-user
+  namespace: pod-security-policy-psp-namespace
+---
+apiVersion: v1
+items:
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: RoleBinding
+    metadata:
+      name: pod-security-policy-psp-user-editor
+      namespace: pod-security-policy-psp-namespace
+    roleRef:
+      apiGroup: rbac.authorization.k8s.io
+      kind: ClusterRole
+      name: edit
+    subjects:
+      - kind: ServiceAccount
+        name: pod-security-policy-psp-namespace
+        namespace: pod-security-policy-psp-namespace
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pause
+  namespace: pod-security-policy-psp-namespace-unprivileged
+spec:
+  containers:
+    - name: pause
+      image: k8s.gcr.io/pause
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pause
+  namespace: pod-security-policy-psp-namespace-privileged
+spec:
+  containers:
+    - name: pause
+      image: k8s.gcr.io/pause
+      securityContext:
+        privileged: true
