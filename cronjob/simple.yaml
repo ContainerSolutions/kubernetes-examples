@@ -1,5 +1,5 @@
 ---
-# https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/
+# https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:

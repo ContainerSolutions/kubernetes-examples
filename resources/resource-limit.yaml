@@ -1,0 +1,23 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: resource-limit-pod
+spec:
+  containers:
+    - name: resource-limit-container
+      image: busybox
+      args:
+        - sleep
+        - "600"
+      livenessProbe:
+        exec:
+          command:
+            - cat
+            - /tmp/healthy
+        initialDelaySeconds: 5
+        periodSeconds: 5
+      resources:
+        limits:
+          cpu: "30m"
+          memory: "200Mi"
