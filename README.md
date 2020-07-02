@@ -18,8 +18,12 @@ This might be to do a basic test of an env, find an example to tinker with, or s
 
 `broken-*` - yamls that exemplify broken kubernetes yaml states
 
-## Sources
+## Sources / Thanks To
 
 [Official Kubernetes docs](https://kubernetes.io/docs/)
 
 [Kubernetes by Example](https://kubernetesbyexample.com/)
+
+[Practical Kubernetes](https://github.com/kubernauts/practical-kubernetes-problems)
+
+[Security Examples](https://github.com/NodyHub/docker-k8s-resources/tree/master/k8s-pods)
