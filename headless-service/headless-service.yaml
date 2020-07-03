@@ -1,7 +1,10 @@
 # Example of a headless service.
 # To see the difference, exec onto the headless service app, and do
+#
 # nslookup headless-service-normal-service
 # nslookup headless-service-headless-service
+#
+# from the dns-debug service (does not work from the deployed app itself - not sure why)
 ---
 apiVersion: v1
 kind: Service
@@ -52,3 +55,16 @@ spec:
           name: headless-service-app
           ports:
             - containerPort: 3000
+---
+# https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/
+apiVersion: v1
+kind: Pod
+metadata:
+  name: headless-service-dnsutils-pod
+spec:
+  containers:
+    - command:
+        - sleep
+        - "3600"
+      image: gcr.io/kubernetes-e2e-test-images/dnsutils:1.3
+      name: dnsutils
