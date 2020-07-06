@@ -14,9 +14,22 @@ I often find myself needing a chunk of yaml to hand to do demonstrate something 
 
 This might be to do a basic test of an env, find an example to tinker with, or send to someone to get them going.
 
+
 ## Sections
 
 `broken-*` - yamls that exemplify broken kubernetes yaml states
+
+## Principles
+
+The examples seek to be:
+
+- As simple as possible to illustrate the functionality
+
+- Self-contained (ie limited to one .yaml file)
+
+- Non-conflicting (eg resource names are unique)
+
+- Clear (eg resource names are verbose and unambiguous)
 
 ## Sources / Thanks To
 
