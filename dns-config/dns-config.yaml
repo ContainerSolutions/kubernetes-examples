@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: dns-config
+  name: dns-config-dns-config-pod
 spec:
   containers:
     - name: test

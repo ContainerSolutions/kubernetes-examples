@@ -2,16 +2,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: simple-deployment
+  name: deployments-simple-deployment-deployment
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: simple-deployment-app
+      app: deployments-simple-deployment-app
   template:
     metadata:
       labels:
-        app: simple-deployment-app
+        app: deployments-simple-deployment-app
     spec:
       containers:
         - name: busybox
