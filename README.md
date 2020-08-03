@@ -4,7 +4,7 @@ A reference repository of YAML with canonical and as-simple-as-possible demonstr
 
 ## Why?
 
-I often find myself needing a chunk of yaml to hand to do demonstrate something specific, such as:
+At Container Solutions we find we regularly need chunks of YAML to  demonstrate something specific, such as:
 
 - A simple deployment
 
@@ -12,7 +12,7 @@ I often find myself needing a chunk of yaml to hand to do demonstrate something 
 
 - A pod with a volume
 
-This might be to do a basic test of an env, find an example to tinker with, or send to someone to get them going.
+This might be to do a basic test of an environment, find an example to tinker with, or send to someone to get them going.
 
 
 ## Sections
