@@ -27,25 +27,19 @@ metadata:
   name: pod-security-policy-user
   namespace: pod-security-policy-psp-namespace
 ---
-apiVersion: v1
-items:
-  - apiVersion: rbac.authorization.k8s.io/v1
-    kind: RoleBinding
-    metadata:
-      name: pod-security-policy-psp-user-editor
-      namespace: pod-security-policy-psp-namespace
-    roleRef:
-      apiGroup: rbac.authorization.k8s.io
-      kind: ClusterRole
-      name: edit
-    subjects:
-      - kind: ServiceAccount
-        name: pod-security-policy-psp-namespace
-        namespace: pod-security-policy-psp-namespace
-kind: List
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
 metadata:
-  resourceVersion: ""
-  selfLink: ""
+  name: pod-security-policy-psp-user-editor
+  namespace: pod-security-policy-psp-namespace
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: edit
+subjects:
+  - kind: ServiceAccount
+    name: pod-security-policy-psp-namespace
+    namespace: pod-security-policy-psp-namespace
 ---
 apiVersion: v1
 kind: Pod
