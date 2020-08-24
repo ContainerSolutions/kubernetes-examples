@@ -1,3 +1,4 @@
+![yamllint](https://github.com/sebagomez/kubernetes-examples/workflows/yamllint/badge.svg)
 # Kubernetes Examples
 
 A reference repository of YAML with canonical and as-simple-as-possible demonstrations of kubernetes functionality and features.
