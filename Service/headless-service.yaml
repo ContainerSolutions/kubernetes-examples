@@ -56,6 +56,7 @@ spec:
           ports:
             - containerPort: 3000
 ---
+# This pod allows us to do the DNS lookup
 # https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/
 apiVersion: v1
 kind: Pod

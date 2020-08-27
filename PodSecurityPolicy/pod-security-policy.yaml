@@ -1,3 +1,4 @@
+# https://kubernetes.io/docs/concepts/policy/pod-security-policy/
 ---
 apiVersion: v1
 kind: Namespace
