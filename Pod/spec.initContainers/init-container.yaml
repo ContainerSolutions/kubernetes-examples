@@ -12,13 +12,3 @@ spec:
     - name: init-container-init-container
       image: busybox
       command: ['sh', '-c', "until nslookup pods-init-container-service.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for myservice; sleep 2; done"]
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: init-container-service
-spec:
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 12345
