@@ -5,7 +5,6 @@ kind: Pod
 metadata:
   name: pods-host-aliases-pod
 spec:
-  restartPolicy: Never
   hostAliases:
     - ip: "127.0.0.1"
       hostnames:

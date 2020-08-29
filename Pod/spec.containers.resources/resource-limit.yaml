@@ -10,13 +10,6 @@ spec:
       args:
         - sleep
         - "600"
-      livenessProbe:
-        exec:
-          command:
-            - cat
-            - /tmp/healthy
-        initialDelaySeconds: 5
-        periodSeconds: 5
       resources:
         limits:
           cpu: "30m"

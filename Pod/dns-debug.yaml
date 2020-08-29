@@ -3,7 +3,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: dnsutils
+  name: pod-dns-debug
 spec:
   containers:
     - command:
