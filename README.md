@@ -15,18 +15,17 @@ At Container Solutions we find we regularly need chunks of YAML to  demonstrate 
 
 This might be to do a basic test of an environment, find an example to tinker with, or send to someone to get them going.
 
-
 ## Sections
 
 `broken-*` - yamls that exemplify broken kubernetes yaml states
 
 `[A-Z][a-zA-Z]*` - Example yamls that correspond to resource types.
 
-Within those folders are either simple/canonical examples, or examples in subfolders that expose particular items of functionality that are highlighted by their yaml path, eg `spec.initContainers/` within `Pod`.
+Within those folders are either simple/canonical examples, or examples in subfolders that expose particular items of functionality that are highlighted by their yaml path, eg `Pod/spec.initContainers/`.
 
-If an example is an exemplar of a particular feature but tightly related to another resource, then an absolute folder might be added eg in Service there is `Pod.spec.subdomain`.
+If an example is an exemplar of a particular feature but tightly related to another resource, then an absolute folder might be added eg in Service there is `Service/Pod.spec.subdomain`.
 
-Symlinks are also used to make finding things easier, eg `Service/headless-service -> spec.clusterIP`.
+Symlinks are also used to make finding things easier, eg `Service/headless-service -> Service/spec.clusterIP`.
 
 ## Principles
 
