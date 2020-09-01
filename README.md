@@ -20,6 +20,14 @@ This might be to do a basic test of an environment, find an example to tinker wi
 
 `broken-*` - yamls that exemplify broken kubernetes yaml states
 
+`[A-Z][a-zA-Z]*` - Example yamls that correspond to resource types.
+
+Within those folders are either simple/canonical examples, or examples in subfolders that expose particular items of functionality that are highlighted by their yaml path, eg `spec.initContainers/` within `Pod`.
+
+If an example is an exemplar of a particular feature but tightly related to another resource, then an absolute folder might be added eg in Service there is `Pod.spec.subdomain`.
+
+Symlinks are also used to make finding things easier, eg `Service/headless-service -> spec.clusterIP`.
+
 ## Principles
 
 The examples seek to be:

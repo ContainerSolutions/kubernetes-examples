@@ -1,5 +1,5 @@
 # Example of a headless service.
-# To see the difference, exec onto the headless service app, and do
+# To see the difference, exec onto the headless service app, and do:
 #
 # nslookup headless-service-normal-service
 # nslookup headless-service-headless-service
