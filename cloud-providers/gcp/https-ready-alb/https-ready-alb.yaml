@@ -31,7 +31,7 @@ spec:
     - EXAMPLE.DEV.REPLACEME
 ---
 # https://cloud.google.com/kubernetes-engine/docs/tutorials/http-balancer
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: https-ready-alb-ingress
