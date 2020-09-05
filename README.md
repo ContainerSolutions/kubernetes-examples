@@ -21,6 +21,8 @@ This might be to do a basic test of an environment, find an example to tinker wi
 
 `[A-Z][a-zA-Z]*` - Example yamls that correspond to resource types.
 
+`test` - Scripts to test or validate the YAML
+
 Within those folders are either simple/canonical examples, or examples in subfolders that expose particular items of functionality that are highlighted by their yaml path, eg `Pod/spec.initContainers/`.
 
 If an example is an exemplar of a particular feature but tightly related to another resource, then an absolute folder might be added eg in Service there is `Service/Pod.spec.subdomain`.

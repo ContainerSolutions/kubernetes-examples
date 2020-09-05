@@ -1,5 +1,16 @@
 #!/usr/bin/env bash
 
+# Move to parent folder
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "${SOURCE}" ]; do # resolve $SOURCE until the file is no longer a symlink
+  readonly BIN_DIR="$(cd -P "$(dirname "$SOURCE}")" && pwd)"
+  SOURCE="$(readlink "${SOURCE}")"
+  [[ ${SOURCE} != /* ]] && SOURCE="${BIN_DIR}/${SOURCE}" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+done
+readonly DIR="$(cd -P "$(dirname "${SOURCE}")" && pwd)"
+# Move to this directory's parent
+cd "${DIR}/.."
+
 if ! RES=$(kubectl deprecations 2>&1)
 then
   echo '`kubectl deprecations` did not run ok. You may need to install the krew 'deprecations' package. See https://krew.sigs.k8s.io/'
