@@ -11,7 +11,7 @@ readonly DIR="$(cd -P "$(dirname "${SOURCE}")" && pwd)"
 # Move to this directory's parent
 cd "${DIR}/.."
 
-if ! RES=$(kubectl deprecations 2>&1)
+if ! RES=$(kubectl deprecations --input-file Pod/simple.yaml 2>&1)
 then
   echo '`kubectl deprecations` did not run ok. You may need to install the krew 'deprecations' package. See https://krew.sigs.k8s.io/'
   echo 'OUTPUT:'
