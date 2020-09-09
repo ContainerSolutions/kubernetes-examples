@@ -1,0 +1,27 @@
+---
+apiVersion: krew.googlecontainertools.github.com/v1alpha2
+kind: Plugin
+metadata:
+  name: examples
+spec:
+  version: "v0.0.1"
+  homepage: https://github.com/ContainerSolutions/kubernetes-examples
+  shortDescription: "Prints sample manifests"
+  description: |
+    A reference repository of YAML with canonical
+    and as-simple-as-possible demonstrations of
+    kubernetes functionality and features.
+  platforms:
+    - selector:
+        matchExpressions:
+          - key: "os"
+            operator: "In"
+            values:
+              - darwin
+              - linux
+      uri: https://github.com/ContainerSolutions/kubernetes-examples/releases/download/v0.0.1/examples.tar.gz
+      sha256: f6e5cab7e4a94f322f0521b3384c0470ac7f0d8136af115e44423d2533885b5e
+      files:
+        - from: "*"
+          to: "."
+      bin: kubectl-examples

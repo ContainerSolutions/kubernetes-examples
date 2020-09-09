@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+
+debug() {
+  [[ "$DEBUG" ]] && echo "-----> $*" 1>&2
+}
+
+print-example() {
+  declare res=$1 pattern=$2
+
+  dir=$(dirname $(readlink $BASH_SOURCE))
+  debug "dir=${dir}"
+
+  if [[ $res == "" ]]; then
+    PS3="Resource Type: "
+    select res in $(ls -1 $dir|grep -v kubectl-examples); do
+      debug "res type choosen: ${res}"
+      break
+    done
+  fi
+
+  # resorce names can be abreviated
+  [[ -d ${dir}/${res} ]] || res="${res}*"
+
+  match=0
+  for f in ${dir}/${res}/**/*${pattern}*.yaml; do
+    [[ -e ${f} ]] && : $(( match++ ))
+  done
+
+  case ${match} in
+    0)
+      debug "no match ..."
+      return
+      ;;
+    1)
+      debug "exact match"
+      yaml=${dir}/${res}*/**/*${pattern}*.yaml
+      ;;
+    *)
+      debug "multiple choice"
+      PS3="Yaml example: "
+      select yaml in ${dir}/${res}/**/*${pattern}*.yaml; do
+        debug "YAML selected: ${yaml}"
+        break
+      done
+      ;;
+  esac
+
+  cat ${yaml}
+}
+
+main() {
+  : ${DEBUG:=1}
+  shopt -s globstar
+  print-example "$@"
+}
+
+[[ "$0" == "$BASH_SOURCE" ]] && main "$@" || true
