@@ -15,6 +15,37 @@ At Container Solutions we find we regularly need chunks of YAML to  demonstrate 
 
 This might be to do a basic test of an environment, find an example to tinker with, or send to someone to get them going.
 
+## Usage
+
+The examples can be used by a kubectl plugin `examples`. This plugin can be installed
+by [krew](https://krew.sigs.k8s.io/):
+
+- first [install krew](https://krew.sigs.k8s.io/docs/user-guide/setup/install/)
+- Install a custom plugin index: `kubectl krew index add cs https://github.com/lalyos/kubernetes-examples.git`
+- Install this plugin: `kubectl krew install cs/examples`
+
+Interactively discover by first selecting the resource type:
+```
+$ kubectl examples
+```
+
+filter by resource type
+```
+$ kubectl examples Service
+```
+
+filter by resource type and pattern
+```
+$ kubectl examples Pod res
+```
+
+If there is only a single match selected by the parameters, it is printed to the stdout.
+So you can deploy a modified version of a sample by:
+```
+$ export KUBE_EDITOR='code -w'
+$ kubectl examples Ingress fanout | kubectl create -f - --edit
+```
+
 ## Sections
 
 `broken-*` - yamls that exemplify broken kubernetes yaml states
@@ -26,6 +57,8 @@ Within those folders are either simple/canonical examples, or examples in subfol
 If an example is an exemplar of a particular feature but tightly related to another resource, then an absolute folder might be added eg in Service there is `Service/Pod.spec.subdomain`.
 
 Symlinks are also used to make finding things easier, eg `Service/headless-service -> Service/spec.clusterIP`.
+
+`plugins` - a directory following the spec for a Custom krew [plugin index](https://krew.sigs.k8s.io/docs/user-guide/custom-indexes/)
 
 ## Principles
 
