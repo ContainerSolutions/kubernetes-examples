@@ -30,7 +30,7 @@ spec:
               - darwin
               - linux
       uri: https://github.com/ContainerSolutions/kubernetes-examples/releases/download/v0.0.1/examples.tar.gz
-      sha256: f6e5cab7e4a94f322f0521b3384c0470ac7f0d8136af115e44423d2533885b5e
+      sha256: e11c9f7a569e946c2d197c7560757d783cad25846d49480ccf0a61ccabf9f521
       files:
         - from: "*"
           to: "."
