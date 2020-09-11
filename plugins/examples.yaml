@@ -11,6 +11,16 @@ spec:
     A reference repository of YAML with canonical
     and as-simple-as-possible demonstrations of
     kubernetes functionality and features.
+
+    Usage:
+      interactively selecting resource type:
+        kubectl examples
+
+      interactively selecting yaml:
+        kubectl examples Service
+
+      create a sample ingress while modifying it:
+        kubectl examples Ingress fanout | kubectl create -f - --edit
   platforms:
     - selector:
         matchExpressions:
