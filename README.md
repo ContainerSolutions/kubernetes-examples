@@ -21,7 +21,7 @@ The examples can be used by a kubectl plugin `examples`. This plugin can be inst
 by [krew](https://krew.sigs.k8s.io/):
 
 - first [install krew](https://krew.sigs.k8s.io/docs/user-guide/setup/install/)
-- Install a custom plugin index: `kubectl krew index add cs https://github.com/lalyos/kubernetes-examples.git`
+- Install a custom plugin index: `kubectl krew index add cs https://github.com/ContainerSolutions/kubernetes-examples.git`
 - Install this plugin: `kubectl krew install cs/examples`
 
 Interactively discover by first selecting the resource type:
