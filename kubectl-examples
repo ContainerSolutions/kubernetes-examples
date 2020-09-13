@@ -6,13 +6,14 @@ debug() {
 
 print-example() {
   declare res=$1 pattern=$2
-
-  dir=$(dirname $(readlink $BASH_SOURCE))
+  SELF=${BASH_SOURCE}
+  [[ -L $SELF ]] && SELF=$(readlink ${SELF})
+  dir=$(dirname $SELF)
   debug "dir=${dir}"
 
   if [[ $res == "" ]]; then
     PS3="Resource Type: "
-    select res in $(ls -1 $dir|grep -v kubectl-examples); do
+    select res in [A-LN-Z][a-z]*; do
       debug "res type choosen: ${res}"
       break
     done
