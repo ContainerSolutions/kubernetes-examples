@@ -23,8 +23,8 @@ spec:
               items:
                 - key: username
                   path: my-group/my-username
+                  mode: 511
               name: volumes-projected-secret
-              mode: 511
           - downwardAPI:
               items:
                 - path: "labels"

@@ -3,7 +3,7 @@
 kind: Pod
 apiVersion: v1
 metadata:
-  name: topology-spread-constraints/topology-spread-constraints-with-node-affinity-pod
+  name: topology-spread-constraints-with-node-affinity-pod
   labels:
     label1: value1
 spec:
