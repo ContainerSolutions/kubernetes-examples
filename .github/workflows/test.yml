@@ -48,4 +48,4 @@ jobs:
 
       - name: check apply log for error
         run: |
-          grep -B1 '=== ERROR' apply.txt && exit 1
+          if grep -B1 '=== ERROR' apply.txt; then exit 1; fi
