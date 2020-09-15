@@ -7,7 +7,6 @@ metadata:
 spec:
   hostPID: true
   hostIPC: true
-  hostUTS: true
   hostNetwork: true
   containers:
     - command:

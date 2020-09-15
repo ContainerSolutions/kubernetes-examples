@@ -10,6 +10,7 @@ spec:
         - sleep
         - "3600"
       name: busybox
+      image: busybox
       volumeMounts:
         - mountPath: /var/local/aaa
           name: volumes-file-or-create-dir
