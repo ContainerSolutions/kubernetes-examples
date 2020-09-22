@@ -10,7 +10,7 @@ aggressive or insulting behaviour.
 
 To this end, the project and everyone participating in it is bound by the [Code of
 Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report
-unacceptable behaviour to any of the project admins or adrian.mouat@container-solutions.com.
+unacceptable behaviour to any of the project admins or ian.miell@container-solutions.com.
 
 ## Bugs/Mistakes
 
