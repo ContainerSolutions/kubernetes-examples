@@ -15,7 +15,7 @@ spec:
     spec:
       initContainers:
         - command:
-            - "/bin/bash"
+            - "/bin/sh"
             - "-c"
             - "echo 'message from init' > /init-container-msg-mount-path/this"
           image: busybox
