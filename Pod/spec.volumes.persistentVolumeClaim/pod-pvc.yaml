@@ -8,8 +8,8 @@ spec:
     - name: myfrontend
       image: nginx
       volumeMounts:
-      - mountPath: /usr/share/nginx/html
-        name: mypd
+        - mountPath: /usr/share/nginx/html
+          name: mypd
   volumes:
     - name: mypd
       persistentVolumeClaim:
