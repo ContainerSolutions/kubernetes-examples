@@ -4,16 +4,18 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: volumes-local-persistent-volume
+  labels:
+    pv: local
 spec:
   capacity:
-    storage: 100Gi
+    storage: 5Gi
   volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Delete
-  storageClassName: local-storage
+  storageClassName: hostpath
   local:
-    path: /mnt/disks/ssd1
+    path: /Users/seba/dev/storage
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -21,4 +23,4 @@ spec:
             - key: kubernetes.io/hostname
               operator: In
               values:
-                - example-node
+                - docker-desktop
