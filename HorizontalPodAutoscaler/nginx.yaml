@@ -20,7 +20,7 @@ spec:
           ports:
             - containerPort: 80
           resources:
-              # You must specify requests for CPU to autoscale
-              # based on CPU utilization
-                requests:
-                    cpu: "250m"
+            # You must specify requests for CPU to autoscale
+            # based on CPU utilization
+            requests:
+                  cpu: "250m"
