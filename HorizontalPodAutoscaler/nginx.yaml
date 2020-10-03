@@ -1,4 +1,4 @@
-#manifest for CPU-based autoscale from https://cloud.google.com/kubernetes-engine/docs/how-to/horizontal-pod-autoscaling
+# Manifest for CPU-based autoscale from https://cloud.google.com/kubernetes-engine/docs/how-to/horizontal-pod-autoscaling
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -19,8 +19,8 @@ spec:
           image: nginx:1.7.9
           ports:
             - containerPort: 80
-            resources:
+          resources:
               # You must specify requests for CPU to autoscale
               # based on CPU utilization
-              requests:
-                cpu: "250m"
+                requests:
+                    cpu: "250m"
