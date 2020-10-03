@@ -15,12 +15,12 @@ spec:
         app: nginx
     spec:
       containers:
-      - name: nginx
-        image: nginx:1.7.9
-        ports:
-        - containerPort: 80
-        resources:
-          # You must specify requests for CPU to autoscale
-          # based on CPU utilization
-          requests:
-            cpu: "250m"
+        - name: nginx
+          image: nginx:1.7.9
+          ports:
+          - containerPort: 80
+          resources:
+            # You must specify requests for CPU to autoscale
+            # based on CPU utilization
+            requests:
+              cpu: "250m"
