@@ -15,7 +15,7 @@ spec:
   persistentVolumeReclaimPolicy: Delete
   storageClassName: hostpath
   local:
-    path: /Users/seba/dev/storage
+    path: /mnt/disks/ssd1
   nodeAffinity:
     required:
       nodeSelectorTerms:
