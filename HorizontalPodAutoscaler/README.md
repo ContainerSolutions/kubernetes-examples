@@ -43,6 +43,9 @@ For deleting cluster, use next:
 > `kubectl delete deployment horizontal-pod-autoscaler-nginx`
 
 Additional information about HorizontalPodAutoscaler you could find on next links:
+
 https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
+
 https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/
+
 https://cloud.google.com/kubernetes-engine/docs/how-to/horizontal-pod-autoscaling
