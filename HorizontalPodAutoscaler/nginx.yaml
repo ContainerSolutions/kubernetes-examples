@@ -1,9 +1,8 @@
-# Manifest for CPU-based autoscale from https://cloud.google.com/kubernetes-engine/docs/how-to/horizontal-pod-autoscaling
+# Manifest for nginx deployment from https://cloud.google.com/kubernetes-engine/docs/how-to/horizontal-pod-autoscaling
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-cpu-autoscale
-  namespace: default
+  name: horizontal-pod-autoscaler-nginx
 spec:
   replicas: 3
   selector:
