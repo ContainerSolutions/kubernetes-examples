@@ -1,0 +1,22 @@
+---
+# https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-configuration
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingWebhookConfiguration
+metadata:
+  name: "simple-policy.example.com"
+webhooks:
+  - name: "simple-policy.example.com"
+    rules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        operations: ["CREATE"]
+        resources: ["pods"]
+        scope: "Namespaced"
+    clientConfig:
+      service:
+        namespace: "simple-namespace"
+        name: "simple-service"
+      caBundle: "<`caBundle` is a PEM encoded CA bundle which will be used to validate the webhook's server certificate.>"
+    admissionReviewVersions: ["v1", "v1beta1"]
+    sideEffects: None
+    timeoutSeconds: 5
