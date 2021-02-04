@@ -19,8 +19,8 @@ jobs:
     #    options: >-
     #      --privileged
 
-    #steps:
-    #  - uses: actions/checkout@v2
+    steps:
+      - uses: actions/checkout@v2
 
     #  - name: kubectl version
     #    run: |
