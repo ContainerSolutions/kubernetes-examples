@@ -8,46 +8,46 @@ jobs:
   apply-all-yaml:
     runs-on: ubuntu-latest
 
-    # run a single container k8s control plane:
-    # couldn't figure how to specify a custom command for the container
-    # so ended up creating a custom image
-    services:
-      k3s:
-        image: lalyos/k3s:hack
-        ports:
-          - 8080:8080
-        options: >-
-          --privileged
+    ## run a single container k8s control plane:
+    ## couldn't figure how to specify a custom command for the container
+    ## so ended up creating a custom image
+    #services:
+    #  k3s:
+    #    image: lalyos/k3s:hack
+    #    ports:
+    #      - 8080:8080
+    #    options: >-
+    #      --privileged
 
-    steps:
-      - uses: actions/checkout@v2
+    #steps:
+    #  - uses: actions/checkout@v2
 
-      - name: kubectl version
-        run: |
-          sleep 5
-          type kubectl
-          kubectl version || true | tee apply.txt
-          ls ~/.*
-          kubectl create sa default 2>/dev/null || true
-          kubectl get sa -A
+    #  - name: kubectl version
+    #    run: |
+    #      sleep 5
+    #      type kubectl
+    #      kubectl version || true | tee apply.txt
+    #      ls ~/.*
+    #      kubectl create sa default 2>/dev/null || true
+    #      kubectl get sa -A
 
-      - name: check all yaml
-        run: |
-          for y in [A-Z][a-z]*/**/*.yaml; do
-            echo === apply: ${y}
-            if kubectl apply -f $y ;then
-            kubectl delete -f $y &
-          else
-            echo === ERROR: $y
-          fi
-          done |& tee apply.txt
+    #  - name: check all yaml
+    #    run: |
+    #      for y in [A-Z][a-z]*/**/*.yaml; do
+    #        echo === apply: ${y}
+    #        if kubectl apply -f $y ;then
+    #        kubectl delete -f $y &
+    #      else
+    #        echo === ERROR: $y
+    #      fi
+    #      done |& tee apply.txt
 
-      - name: upload artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: apply-test-all-yaml
-          path: apply.txt
+    #  - name: upload artifact
+    #    uses: actions/upload-artifact@v2
+    #    with:
+    #      name: apply-test-all-yaml
+    #      path: apply.txt
 
-      - name: check apply log for error
-        run: |
-          if grep -B1 '=== ERROR' apply.txt; then exit 1; fi
+    #  - name: check apply log for error
+    #    run: |
+    #      if grep -B1 '=== ERROR' apply.txt; then exit 1; fi
