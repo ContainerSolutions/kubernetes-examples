@@ -27,6 +27,7 @@ jobs:
           sleep 5
           type kubectl
           kubectl version || true | tee apply.txt
+          ls ~/.*
           kubectl create sa default 2>/dev/null || true
           kubectl get sa -A
 
