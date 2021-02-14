@@ -15,7 +15,7 @@ jobs:
            sudo mv kubeval /usr/local/bin
       - name: check all yaml
         run: |
-          comm -3 <(find . | grep yaml$ | xargs -n1 kubeval) <(cat .kubeval-ignore) | xargs -n1 kubeval | tee -a apply.txt
+          comm -3 <(find . | grep yaml$) <(cat .kubeval-ignore) | xargs -n1 kubeval | tee -a apply.txt
       - name: upload artifact
         uses: actions/upload-artifact@v2
         with:
