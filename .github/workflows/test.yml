@@ -12,7 +12,7 @@ jobs:
       - name: install kubeval
         run: |
            curl -L https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz | tar -zxf -
-           mv kubeval /usr/local/bin
+           sudo mv kubeval /usr/local/bin
       - name: check all yaml
         run: |
           comm -3 <(find . | grep yaml$ | xargs -n1 kubeval) <(cat .kubeval-ignore) | xargs -n1 kubeval | tee -a apply.txt
