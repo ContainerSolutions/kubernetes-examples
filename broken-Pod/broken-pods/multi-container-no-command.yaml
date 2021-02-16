@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: broken-pod-multi-container-no-command-pod
+spec:
+  containers:
+    # this container has no command or entrypoint specified
+    - image: mstormo/suse
+      imagePullPolicy: IfNotPresent
+      name: broken-pod-multi-container-no-command-1
+    - image: busybox
+      command:
+        - sleep
+        - "3600"
+      name: broken-pod-multi-container-no-command-2

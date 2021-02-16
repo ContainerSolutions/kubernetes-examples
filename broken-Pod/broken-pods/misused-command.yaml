@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: broken-pods-misused-command-pod
+spec:
+  containers:
+    - image: busybox
+      command:
+        - /bin/sh
+        - -c
+      name: broken-pods-misused-command-container

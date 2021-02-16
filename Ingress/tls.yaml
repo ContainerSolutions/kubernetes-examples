@@ -1,0 +1,28 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: ingress-tls-secret
+data:
+  # Data here as a placeholder - it's just a base64-encoded 'a'
+  tls.crt: YQo=
+  tls.key: YQo=
+type: kubernetes.io/tls
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-tls
+spec:
+  tls:
+    - hosts:
+        - sslexample.foo.com
+      secretName: ingress-tls-secret
+  rules:
+    - host: sslexample.foo.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: testsvc1
+              servicePort: 80

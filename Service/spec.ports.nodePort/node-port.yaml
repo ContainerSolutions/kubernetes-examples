@@ -1,0 +1,14 @@
+---
+# https://kubernetes.io/docs/concepts/services-networking/service/#nodeport
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-node-port-service
+spec:
+  type: NodePort
+  selector:
+    app: MyApp
+  ports:
+    - port: 80         # By default and for convenience, the `targetPort` is set to the same value as the `port` field.
+      targetPort: 80   # Optional field.
+      nodePort: 30007  # Optional field. By default and for convenience, the Kubernetes control plane will allocate a port from a range (default: 30000-32767)

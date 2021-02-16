@@ -1,0 +1,11 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: network-policy-default-allow-ingress
+spec:
+  podSelector: {}
+  ingress:
+    - {}
+  policyTypes:
+    - Ingress

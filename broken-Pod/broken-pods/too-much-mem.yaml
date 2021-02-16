@@ -1,0 +1,16 @@
+---
+# https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/ claims that this invoked the OOM killer, but it runs fine on MicroK8s?
+apiVersion: v1
+kind: Pod
+metadata:
+  name: broken-pods-too-much-mem-pod
+spec:
+  containers:
+    - command:
+        - sleep
+        - "3600"
+      image: busybox
+      name: broken-pods-too-much-mem-container
+      resources:
+        requests:
+          memory: "1000Gi"

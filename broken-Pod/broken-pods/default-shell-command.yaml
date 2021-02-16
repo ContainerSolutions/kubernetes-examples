@@ -1,0 +1,9 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: broken-pods-default-shell-command-pod
+spec:
+  containers:
+    - image: busybox
+      name: broken-pods-default-shell-comman-container

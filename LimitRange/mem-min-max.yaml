@@ -1,0 +1,13 @@
+# https://kubernetes.io/docs/tasks/administer-cluster/manage-resources/memory-constraint-namespace/
+---
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: limit-range-mem-min-max
+spec:
+  limits:
+    - max:
+        memory: 1Gi
+      min:
+        memory: 500Mi
+      type: Container
