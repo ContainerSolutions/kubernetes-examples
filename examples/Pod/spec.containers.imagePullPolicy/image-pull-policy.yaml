@@ -1,0 +1,14 @@
+# imagePullPolicies: IfNotPresent, Always
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pods-image-pull-policy-pod
+spec:
+  containers:
+    - command:
+        - sleep
+        - "3600"
+      image: busybox
+      imagePullPolicy: IfNotPresent
+      name: pods-image-pull-policy-container

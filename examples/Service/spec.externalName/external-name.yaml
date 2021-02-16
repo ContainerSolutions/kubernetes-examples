@@ -1,0 +1,9 @@
+---
+# https://kubernetes.io/docs/concepts/services-networking/service/#externalname
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-external-name-service
+spec:
+  type: ExternalName
+  externalName: my.database.example.com

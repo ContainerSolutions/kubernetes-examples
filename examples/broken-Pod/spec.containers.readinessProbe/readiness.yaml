@@ -1,0 +1,20 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: broken-readiness-pod
+spec:
+  containers:
+    - args:
+        - /bin/sh
+        - -c
+        - "sleep 3600"
+      image: busybox
+      readinessProbe:
+        exec:
+          command:
+            - cat
+            - /tmp/healthy
+        initialDelaySeconds: 5
+        periodSeconds: 5
+      name: broken-readiness-container

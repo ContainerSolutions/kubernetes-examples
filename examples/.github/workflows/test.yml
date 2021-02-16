@@ -1,0 +1,26 @@
+---
+name: k8s-test
+
+on:
+  [push, pull_request]
+
+jobs:
+  apply-all-yaml:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: install kubeval
+        run: |
+           curl -L https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz | tar -zxf -
+           sudo mv kubeval /usr/local/bin
+      - name: check all yaml
+        run: |
+          comm -3 <(find . | grep yaml$ | sort) <(cat .kubeval-ignore | sort) | xargs -n1 kubeval | tee -a apply.txt
+      - name: upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: apply-test-all-yaml
+          path: apply.txt
+      - name: check apply log for error
+        run: |
+          if grep '^ERR' apply.txt; then exit 1; fi

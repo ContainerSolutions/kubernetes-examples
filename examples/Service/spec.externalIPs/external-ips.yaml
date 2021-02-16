@@ -1,0 +1,16 @@
+---
+# https://kubernetes.io/docs/concepts/services-networking/service/#external-ips
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-external-ips-service
+spec:
+  selector:
+    app: MyApp
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 9376
+  externalIPs:
+    - 80.11.12.10

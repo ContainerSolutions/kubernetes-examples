@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: broken-pods-private-repo-pod
+spec:
+  containers:
+    # this container has no command or entrypoint specified
+    - image: imiell/bad-dockerfile-private
+      name: broken-pods-private-repo-container

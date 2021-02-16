@@ -1,0 +1,64 @@
+---
+# Taken from: https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-hostname-and-subdomain-fields
+# Currently when a pod is created, its hostname is the Pod's metadata.name value.
+# The Pod spec has an optional hostname field, which can be used to specify the Pod's hostname.
+# When specified, it takes precedence over the Pod's name to be the hostname of the pod.
+# For example, given a Pod with hostname set to "my-host", the Pod will have its hostname set to "my-host".
+# The Pod spec also has an optional subdomain field which can be used to specify its subdomain.
+# For example, a Pod with hostname set to "foo", and subdomain set to "bar", in namespace
+# "default", will have the fully qualified domain name (FQDN) "foo.bar.default.svc.cluster-domain.example".
+#
+# If there exists a headless service in the same namespace as the pod and with the same name as the subdomain,
+# the cluster's DNS Server also returns an A or AAAA record for the Pod's fully qualified hostname.
+# For example, given a Pod with the hostname set to "subdomain-simple-hostname-1" and the subdomain
+# set to "subdomain-simple-subdomain-service", and a headless Service named "subdomain-simple-subdomain-service"
+# in the same namespace, the pod will see its own FQDN as
+# "subdomain-simple-hostname-1.subdomain-simple-subdomain-service.default.svc.cluster-domain.example".
+# DNS serves an A or AAAA record at that name, pointing to the Pod's IP.
+# Both pods "subdomain-simple-pod-1" and "subdomain-simple-pod-2" can have their distinct A or AAAA records.
+
+Example:
+apiVersion: v1
+kind: Service
+metadata:
+  name: subdomain-simple-subdomain-service
+spec:
+  clusterIP: None  # A headless service
+  ports:
+    - name: subdomain-simple-port-name  # Actually, no port is needed.
+      port: 1234
+      targetPort: 1234
+  selector:
+    name: subdomain-simple-selector
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    name: subdomain-simple-selector
+  name: subdomain-simple-pod-1
+spec:
+  containers:
+    - command:
+        - sleep
+        - "3600"
+      image: busybox
+      name: subdomain-simple-container-1
+  hostname: subdomain-simple-hostname-1
+  subdomain: subdomain-simple-subdomain-service
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: subdomain-simple-pod-2
+  labels:
+    name: subdomain-simple-selector
+spec:
+  containers:
+    - command:
+        - sleep
+        - "3600"
+      image: busybox
+      name: subdomain-simple-container-2
+  hostname: subdomain-simple-hostname-2
+  subdomain: subdomain-simple-subdomain-service

@@ -1,0 +1,20 @@
+---
+# https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: cronjob-simple
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - args:
+                - /bin/sh
+                - -c
+                - date; echo Hello from the Kubernetes cluster cronjob
+              image: busybox
+              name: cronjob-simple-container
+          restartPolicy: OnFailure

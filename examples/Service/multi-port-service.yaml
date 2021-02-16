@@ -1,0 +1,18 @@
+---
+# https://kubernetes.io/docs/concepts/services-networking/service/#multi-port-services
+apiVersion: v1
+kind: Service
+metadata:
+  name: multi-port-service-service
+spec:
+  selector:
+    app: MyApp
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 8080
+    - name: https
+      protocol: TCP
+      port: 443
+      targetPort: 8443

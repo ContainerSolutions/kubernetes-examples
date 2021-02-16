@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+
+debug() {
+  [[ "$DEBUG" ]] && echo "-----> $*" 1>&2
+}
+
+print-example() {
+  declare res=$1 pattern=$2
+
+  dir=$(dirname $(readlink $BASH_SOURCE))
+  debug "dir=${dir}"
+
+  command fzf --version >/dev/null && FZF_INSTALLED=true
+
+  if [[ $res == "" ]]; then
+    if [[ $FZF_INSTALLED ]];then
+      res=$(cd ${dir}; ls -1 $dir|grep -v kubectl-examples | fzf -e --prompt="Resource Type>" )
+    else
+      PS3="Resource Type: "
+      select res in $(ls -1 $dir|grep -v kubectl-examples); do
+        debug "res type choosen: ${res}"
+        break
+      done
+    fi
+  fi
+
+  # resorce names can be abreviated
+  [[ -d ${dir}/${res} ]] || res="${res}*"
+
+  match=0
+  for f in ${dir}/${res}/**/*${pattern}*.yaml; do
+    [[ -e ${f} ]] && : $(( match++ ))
+  done
+
+  case ${match} in
+    0)
+      debug "no match ..."
+      return
+      ;;
+    1)
+      debug "exact match"
+      yaml=${dir}/${res}*/**/*${pattern}*.yaml
+      ;;
+    *)
+      debug "multiple choice"
+      PS3="Yaml example: "
+      if [[ $FZF_INSTALLED ]];then
+        yaml=$(
+          cd ${dir}/${res}
+          ls -1 **/*${pattern}*.yaml \
+          | fzf -e --preview='cat {}'
+        )
+        yaml="${dir}/${res}/${yaml}"
+      else
+        select yaml in ${dir}/${res}/**/*${pattern}*.yaml; do
+          debug "YAML selected: ${yaml}"
+          break
+        done
+      fi
+      ;;
+  esac
+
+  cat ${yaml}
+}
+
+main() {
+  : ${DEBUG:=1}
+  shopt -s globstar
+  print-example "$@"
+}
+
+[[ "$0" == "$BASH_SOURCE" ]] && main "$@" || true

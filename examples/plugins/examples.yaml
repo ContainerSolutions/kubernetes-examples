@@ -1,0 +1,37 @@
+---
+apiVersion: krew.googlecontainertools.github.com/v1alpha2
+kind: Plugin
+metadata:
+  name: examples
+spec:
+  version: "v0.0.2"
+  homepage: https://github.com/ContainerSolutions/kubernetes-examples
+  shortDescription: "Prints sample manifests"
+  description: |
+    A reference repository of YAML with canonical
+    and as-simple-as-possible demonstrations of
+    kubernetes functionality and features.
+
+    Usage:
+      interactively selecting resource type:
+        kubectl examples
+
+      interactively selecting yaml:
+        kubectl examples Service
+
+      create a sample ingress while modifying it:
+        kubectl examples Ingress fanout | kubectl create -f - --edit
+  platforms:
+    - selector:
+        matchExpressions:
+          - key: "os"
+            operator: "In"
+            values:
+              - darwin
+              - linux
+      uri: https://github.com/ContainerSolutions/kubernetes-examples/releases/download/v0.0.2/examples.tar.gz
+      sha256: 7d0fa34e77cc8f8fd890b0731e40b13ce7d3d5de3c50885b79f75d4400b96f12
+      files:
+        - from: "*"
+          to: "."
+      bin: kubectl-examples

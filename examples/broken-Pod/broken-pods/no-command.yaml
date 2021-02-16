@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: broken-pods-no-command-pod
+spec:
+  containers:
+    # this container has no command or entrypoint specified
+    - image: mstormo/suse
+      name: broken-pods-no-command-container

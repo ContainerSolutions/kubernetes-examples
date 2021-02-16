@@ -1,0 +1,37 @@
+# Example 'rich' network policy
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: network-policy-policy
+spec:
+  podSelector:  # Required. Selects the pods to which this network policy applies. Ingress rules applied to these pods. An empty podSelector means 'all pods in namespace'. Other NetworkPolicies can apply to same pods (rules are additive).
+    matchLabels:  # Labels are ANDed if there are multiple.
+      role: db
+  policyTypes:  # This field is inferred from existence of rules further below. All policies are assumed to affect ingress. Hence "Egress" here if you want an egress-only policy.
+    - Ingress
+    - Egress
+  ingress:
+    - from:
+        # If this field is set, then it negates the other two.
+        # - ipBlock:
+        #     cidr: 172.17.0.0/16
+        #     except:
+        #       - 172.17.1.0/24
+        - namespaceSelector:
+            matchLabels:
+              project: myproject
+        - podSelector:
+            matchLabels:
+              role: frontend
+      ports:
+        - protocol: TCP  # TCP (default), UDP or SCTP
+          port: 6379  # Numerical or named port
+  egress:
+    - to:
+        # If this field is set, then it negates the other two (namespaceSelector and podSelector).
+        - ipBlock:
+            cidr: 10.0.0.0/24
+      ports:
+        - protocol: TCP
+          port: 5978
