@@ -1,18 +1,28 @@
 ---
-layout: page
+layout: default
 title: About
-permalink: /about/
+nav_order: 2
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+At Container Solutions we find we regularly need chunks of YAML to  demonstrate something specific, such as:
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
+- A simple deployment
 
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
+- A simple pod
 
+- A pod with a volume
 
-[jekyll-organization]: https://github.com/jekyll
+This might be to do a basic test of an environment, find an example to tinker with, or send to someone to get them going.
+
+## Principles
+
+The examples seek to be:
+
+- As simple as possible to illustrate the functionality
+
+- Self-contained (ie limited to one .yaml file)
+
+- Non-conflicting (eg resource names are unique)
+
+- Clear (eg resource names are verbose and unambiguous)
+
