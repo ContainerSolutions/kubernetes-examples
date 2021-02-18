@@ -35,7 +35,7 @@ If a new folder, child of `Examples/` has been created on the master branch and 
 
 
 ## Credits To
-[Jekyll](https://jekyllrb.com/)
-[prismJS](https://prismjs.com/)
-[Just-the-docs jekyll documentation theme](https://github.com/pmarsceill/just-the-docs)
+- [Jekyll](https://jekyllrb.com/)  
+- [prismJS](https://prismjs.com/)  
+- [Just-the-docs jekyll documentation theme](https://github.com/pmarsceill/just-the-docs)
 
