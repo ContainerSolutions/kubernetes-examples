@@ -21,7 +21,7 @@
 title: Kubernetes examples
 description: >- # this means to ignore newlines until "baseurl:"
   A reference repository of YAML with canonical and as-simple-as-possible demonstrations of kubernetes functionality and features.
-baseurl: "/kubernetes-examples" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 logo: "/assets/images/logo-main.svg"
 aux_links:
