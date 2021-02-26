@@ -3,6 +3,8 @@
 
 A reference repository of YAML with canonical and as-simple-as-possible demonstrations of kubernetes functionality and features.
 
+See here for a searchable front-end: https://k8s-examples.container-solutions.com/
+
 ## Why?
 
 At Container Solutions we find we regularly need chunks of YAML to  demonstrate something specific, such as:
