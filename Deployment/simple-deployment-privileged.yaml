@@ -1,0 +1,27 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployments-simple-deployment-privileged-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: deployments-simple-deployment-privileged-app
+  template:
+    metadata:
+      labels:
+        app: deployments-simple-deployment-privileged-app
+    spec:
+      containers:
+        - name: busybox
+          image: busybox
+          command:
+            - /bin/sh
+            - -c
+            #- export A=$(echo $POD_IP | tr '.' '-' | sed 's/$/.q-connector.pod.cluster.local/g') && echo ${A}
+            - sleep 3600
+          #securityContext:
+          #  capabilities:
+          #    add:
+          #      - CAP_SYS_ADMIN
