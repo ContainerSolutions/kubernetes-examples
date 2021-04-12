@@ -35,4 +35,3 @@ spec:
                 configMapKeyRef:
                   name: kafka_config_map
                   key: topic
-            
