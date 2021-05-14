@@ -1,0 +1,18 @@
+---
+apiVersion: settings.k8s.io/v1alpha1
+kind: PodPreset
+metadata:
+  name: pod-preset-simple
+spec:
+  selector:
+    matchLabels:
+      role: frontend
+  env:
+    - name: DB_PORT
+      value: "6379"
+  volumeMounts:
+    - mountPath: /cache
+      name: pod-preset-simple-cache-volume
+  volumes:
+    - name: pod-preset-simple-cache-volume
+      emptyDir: {}

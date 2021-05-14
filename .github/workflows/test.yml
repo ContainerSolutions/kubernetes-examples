@@ -1,3 +1,4 @@
+---
 name: k8s-test
 
 on:
@@ -6,46 +7,20 @@ on:
 jobs:
   apply-all-yaml:
     runs-on: ubuntu-latest
-
-    # run a single container k8s control plane:
-    # couldn't figure how to specify a custom command for the container
-    # so ended up creating a custom image
-    services:
-      k3s:
-        image: lalyos/k3s:hack
-        ports:
-          - 8080:8080
-        options: >-
-          --privileged
-
     steps:
       - uses: actions/checkout@v2
-
-      - name: kubectl version
+      - name: install kubeval
         run: |
-          sleep 5
-          type kubectl
-          kubectl version || true | tee apply.txt
-          kubectl create sa default 2>/dev/null || true
-          kubectl get sa -A
-
+           curl -L https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz | tar -zxf -
+           sudo mv kubeval /usr/local/bin
       - name: check all yaml
         run: |
-          for y in [A-Z][a-z]*/**/*.yaml; do
-            echo === apply: ${y}
-            if kubectl apply -f $y ;then
-            kubectl delete -f $y &
-          else
-            echo === ERROR: $y
-          fi
-          done |& tee apply.txt
-
+          comm -3 <(find . | grep yaml$ | sort) <(cat .kubeval-ignore | sort) | xargs -n1 kubeval --strict | tee -a apply.txt
       - name: upload artifact
         uses: actions/upload-artifact@v2
         with:
           name: apply-test-all-yaml
           path: apply.txt
-
       - name: check apply log for error
         run: |
-          if grep -B1 '=== ERROR' apply.txt; then exit 1; fi
+          if grep '^ERR' apply.txt; then exit 1; fi

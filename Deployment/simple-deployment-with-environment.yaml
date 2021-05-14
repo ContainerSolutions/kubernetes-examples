@@ -1,0 +1,37 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployments-simple-deployment-with-environment-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: deployments-simple-deployment-with-environment-app
+  template:
+    metadata:
+      labels:
+        app: deployments-simple-deployment-with-environment-app
+    spec:
+      containers:
+        - name: busybox
+          image: busybox
+          command:
+            - sleep
+            - "3600"
+          env:
+            # Plain Text ENV
+            - name: DEMO_GREETING
+              value: "Hello from the environment"
+            # Load from a secret
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: database_secrets
+                  key: password
+            # Load from a configMap
+            - name: KAFKA_TOPIC
+              valueFrom:
+                configMapKeyRef:
+                  name: kafka_config_map
+                  key: topic
