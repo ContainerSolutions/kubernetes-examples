@@ -5,6 +5,8 @@ A reference repository of YAML with canonical and as-simple-as-possible demonstr
 
 See here for a searchable front-end: https://k8s-examples.container-solutions.com/
 
+![Kubernetes Examples](logo.png)
+
 ## Why?
 
 At Container Solutions we find we regularly need chunks of YAML to  demonstrate something specific, such as:

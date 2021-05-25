@@ -1,5 +1,9 @@
 # Kubernetes-Examples Release Process
 
+## Is Pipeline Green?
+
+## Is Latest Kubernetes Version Supported?
+
 ## Fetch Tags and Diff
 
 Get the latest tags:
