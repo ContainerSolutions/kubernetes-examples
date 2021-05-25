@@ -76,6 +76,10 @@ The examples seek to be:
 
 - Clear (eg resource names are verbose and unambiguous)
 
+## Release Process
+
+See [here](RELEASE_PROCESS.md)
+
 ## Sources / Thanks To
 
 [Official Kubernetes docs](https://kubernetes.io/docs/)
