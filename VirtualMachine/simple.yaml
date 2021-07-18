@@ -1,0 +1,21 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: virtualmachine-simple
+spec:
+  running: true
+  template:
+    spec:
+      domain:
+        devices:
+          disks:
+            - name: virtualmachine-simple-disk
+              disk:
+                bus: virtio
+        resources:
+          requests:
+            memory: 64M
+      volumes:
+        - name: virtualmachine-simple-disk
+          containerDisk:
+            image: quay.io/kubevirt/cirros-container-disk-demo
