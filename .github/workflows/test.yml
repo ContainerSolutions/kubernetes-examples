@@ -9,13 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: install kubeval
+      - name: install kubeconform
         run: |
-           curl -L https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz | tar -zxf -
-           sudo mv kubeval /usr/local/bin
+           curl -L https://github.com/yannh/kubeconform/releases/latest/download/kubeconform-linux-amd64.tar.gz | tar -zxf -
+           sudo mv kubeconform /usr/local/bin
       - name: check all yaml
         run: |
-          comm -3 <(find . | grep yaml$ | sort) <(cat .kubeval-ignore | sort) | xargs -n1 kubeval --strict | tee -a apply.txt
+          comm -3 <(find . | grep yaml$ | sort) <(cat .kubeconform-ignore | sort) | xargs -n1 kubeconform --strict | tee -a apply.txt
       - name: upload artifact
         uses: actions/upload-artifact@v2
         with:
