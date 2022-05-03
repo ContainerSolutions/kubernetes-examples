@@ -23,4 +23,4 @@ jobs:
           path: apply.txt
       - name: check apply log for error
         run: |
-          if grep '^ERR' apply.txt; then exit 1; fi
+          if [ -s apply.txt ]; then exit 1; fi
