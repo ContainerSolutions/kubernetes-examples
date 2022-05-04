@@ -15,7 +15,7 @@ jobs:
            sudo mv kubeconform /usr/local/bin
       - name: check all yaml
         run: |
-          comm -3 <(find . | grep yaml$ | sort) <(cat .kubeconform-ignore | sort) | xargs -n1 kubeconform --strict | tee -a apply.txt
+          ./bin/test.sh | tee -a apply.txt
       - name: upload artifact
         uses: actions/upload-artifact@v2
         with:

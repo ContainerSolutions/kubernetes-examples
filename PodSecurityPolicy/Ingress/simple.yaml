@@ -1,6 +1,6 @@
 # Requires an appropriate ingress controller to exist on the cluster for this to take effect
 ---
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: simple
@@ -13,5 +13,7 @@ spec:
           - path: /testpath
             pathType: Prefix
             backend:
-              serviceName: test
-              servicePort: 80
+              service:
+                name: test
+                port:
+                  number: 80
