@@ -1,0 +1,12 @@
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: identity
+spec:
+  hosts:
+    - service-a
+  http:
+    - route:
+        - destination:
+            host: service-a

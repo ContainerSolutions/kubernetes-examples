@@ -6,9 +6,9 @@ metadata:
 spec:
   host: service-a
   subsets:
-  - name: v1 # Arbitrary name for subset
-    labels: # Kubernetes Pod labels to match
-      version: v1
-  - name: v2
-    labels:
-      version: v2
+    - name: v1  # Arbitrary name for subset
+      labels:  # Kubernetes Pod labels to match
+        version: v1
+    - name: v2
+      labels:
+        version: v2

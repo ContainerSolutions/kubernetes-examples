@@ -10,12 +10,12 @@ spec:
   trafficPolicy:
     connectionPool:
       tcp:
-        maxConnections: 100 # Default 4bn
-        connectTimeout: 50ms # Default 10s
-        tcpKeepalive: # TCP-level keepalives ie SO_KEEPALIVE
-          time: 3600s # Default 2h
-          interval: 50s # Default 75s
+        maxConnections: 100  # Default 4bn
+        connectTimeout: 50ms  # Default 10s
+        tcpKeepalive:  # TCP-level keepalives ie SO_KEEPALIVE
+          time: 3600s  # Default 2h
+          interval: 50s  # Default 75s
       http:
-        maxRequestsPerConnection: 1 # Disables HTTP connection keep-alive/reuse. Default unlimited
-        idleTimeout: 1m # How long a keep-alive tcp connection will stay open if unused for any http requests. Default 1h
-        h2UpgradePolicy: UPGRADE # Upgrade http1.1 connections arriving at the sidecar to h2 from sidecar -> workload. Default: use mesh-wide setting
+        maxRequestsPerConnection: 1  # Disables HTTP connection keep-alive/reuse. Default unlimited
+        idleTimeout: 1m  # How long a keep-alive tcp connection will stay open if unused for any http requests. Default 1h
+        h2UpgradePolicy: UPGRADE  # Upgrade http1.1 connections arriving at the sidecar to h2 from sidecar -> workload. Default: use mesh-wide setting

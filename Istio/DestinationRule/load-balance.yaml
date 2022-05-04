@@ -1,3 +1,4 @@
+---
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
@@ -6,4 +7,4 @@ spec:
   host: service-a
   trafficPolicy:
     loadBalancer:
-      simple: LEAST_CONN # Default: ROUND_ROBIN, others: RANDOM
+      simple: LEAST_CONN  # Default: ROUND_ROBIN, others: RANDOM

@@ -1,3 +1,4 @@
+---
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
@@ -8,7 +9,7 @@ spec:
     tls:
       mode: SIMPLE
 ---
-# NB: This establishes an mTLS connection with an upstream endpoint. 
+# NB: This establishes an mTLS connection with an upstream endpoint.
 # It's for _mesh-external_ endpoints; within the mesh Istio automatically establishes mTLS connections between pairs of sidecars.
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule

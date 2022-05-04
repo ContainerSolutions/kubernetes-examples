@@ -1,0 +1,14 @@
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: timeout
+spec:
+  hosts:
+    - service-a
+  http:
+    # Istio will return an HTTP 504 to the caller if the destination doesn't reply in time
+    - route:
+        - destination:
+            host: service-a
+      timeout: 10s
