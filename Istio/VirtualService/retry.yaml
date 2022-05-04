@@ -1,3 +1,4 @@
+---
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
@@ -12,4 +13,4 @@ spec:
       retries:
         attempts: 3
         perTryTimeout: 1s
-        retryOn: 5xx # Any HTTP 5xx status, timed-out/rejected/closed TCP connection
+        retryOn: 5xx  # Any HTTP 5xx status, timed-out/rejected/closed TCP connection

@@ -1,3 +1,4 @@
+---
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
@@ -50,13 +51,13 @@ spec:
           ignoreUriCase: true
           method:
             exact: "POST"
-          headers: # Has header 'x-beta: im_sure'
+          headers:  # Has header 'x-beta: im_sure'
             x-beta:
               exact: "im_sure"
-          queryParams: # '?beta=really_sure'
+          queryParams:  # '?beta=really_sure'
             beta:
               exact: "really_sure"
-          withoutHeaders: # Doesn't have header 'x-feeling: scared'
+          withoutHeaders:  # Doesn't have header 'x-feeling: scared'
             x-feeling:
               exact: "scared"
       route:
