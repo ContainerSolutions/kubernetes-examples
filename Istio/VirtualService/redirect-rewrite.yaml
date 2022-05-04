@@ -1,0 +1,29 @@
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: redirect
+spec:
+  hosts:
+    - service-a
+  http:
+    # Sends an HTTP 301.
+    - redirect:
+        authority: service-a-vnext
+        uri: /app
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: rewrite
+spec:
+  hosts:
+    - service-a
+  http:
+    # Transparently re-writes the destination.
+    - rewrite:
+        authority: service-a-vnext
+        uri: /app
+      route:
+        - destination:
+            host: service-a-vnext

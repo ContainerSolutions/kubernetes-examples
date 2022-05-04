@@ -4,7 +4,7 @@ kind: Ingress
 metadata:
   name: test-ingress
 spec:
-  backend:
+  defaultBackend:
     service:
       name: testsvc
       port:

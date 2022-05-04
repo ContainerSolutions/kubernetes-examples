@@ -1,0 +1,68 @@
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: path-routing
+spec:
+  hosts:
+    - service-a
+  http:
+    - match:
+        - uri:
+            prefix: "/beta"
+          ignoreUriCase: true
+      route:
+        - destination:
+            host: service-a-vnext
+    - route:
+        - destination:
+            host: service-a-current
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: header-routing
+spec:
+  hosts:
+    - service-a
+  http:
+    - match:
+        - headers:
+            x-beta:
+              exact: "yes please"
+      route:
+        - destination:
+            host: service-a-vnext
+    - route:
+        - destination:
+            host: service-a-current
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: combined-routing
+spec:
+  hosts:
+    - service-a
+  http:
+    - match:
+        - uri:
+            prefix: "/beta"
+          ignoreUriCase: true
+          method:
+            exact: "POST"
+          headers:  # Has header 'x-beta: im_sure'
+            x-beta:
+              exact: "im_sure"
+          queryParams:  # '?beta=really_sure'
+            beta:
+              exact: "really_sure"
+          withoutHeaders:  # Doesn't have header 'x-feeling: scared'
+            x-feeling:
+              exact: "scared"
+      route:
+        - destination:
+            host: service-a-vnext
+    - route:
+        - destination:
+            host: service-a-current

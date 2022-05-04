@@ -13,6 +13,7 @@ spec:
                 name: testsvc1
                 port:
                   number: 80
+            pathType: exact
     - host: second.foo.com
       http:
         paths:
@@ -21,6 +22,7 @@ spec:
                 name: testsvc2
                 port:
                   number: 80
+            pathType: exact
     # No host supplied here
     - http:
         paths:
@@ -29,3 +31,4 @@ spec:
                 name: testsvc3
                 port:
                   number: 80
+            pathType: exact

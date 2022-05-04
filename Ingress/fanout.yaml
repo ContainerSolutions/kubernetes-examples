@@ -16,9 +16,11 @@ spec:
                 name: testsvc1
                 port:
                   number: 4201
+            pathType: exact
           - path: /path2
             backend:
               service:
                 name: testsvc2
                 port:
                   number: 4202
+            pathType: exact

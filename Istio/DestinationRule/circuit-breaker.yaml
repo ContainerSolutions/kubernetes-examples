@@ -1,0 +1,15 @@
+# Evaluates error rates for each endpoint in the pool against the settings here, ejecting them if they cross the thresholds.
+---
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: circuit-breaker
+spec:
+  host: service-a
+  trafficPolicy:
+    outlierDetection:
+      consecutive5xxErrors: 7  # Default 5
+      interval: 5m  # Interval over which errors are counted and compared to the threshold. This is a periodic check, not a rolling one.
+      baseEjectionTime: 10s  # Initial period for which the endpoint is ejected from the endpoint pool. Repeated ejections are longer each time. Default 30s
+      maxEjectionPercent: 50  # Max % of endpoints that can ejected from the endpoint pool. Default 10
+      minHealthPercent: 50  # Min % of endpoints in the endpoint pool that must be healthy for circuit-breaking to activate. Default 0

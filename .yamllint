@@ -5,6 +5,9 @@ yaml-files:
   - '*.yml'
   - '.yamllint'
 
+ignore: |
+  .github/
+
 rules:
   braces: enable
   brackets: enable

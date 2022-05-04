@@ -1,0 +1,36 @@
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: header-manipulation
+spec:
+  hosts:
+    - service-a
+  http:
+    - headers:
+        # These rules are always applied
+        request:
+          set:
+            manipulated: "true"
+      route:
+        - weight: 90
+          destination:
+            host: service-a-current
+          headers:
+            # These rules are applied only when this route is taken
+            request:
+              set:
+                test-subset: "false"
+            response:
+              add:
+                new-header: "foo"
+              remove:
+                - old-header
+        - weight: 90
+          destination:
+            host: service-a-next
+          headers:
+            # These rules are applied only when this route is taken
+            request:
+              set:
+                test-subset: "true"
