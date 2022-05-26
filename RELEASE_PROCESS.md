@@ -2,7 +2,7 @@
 
 ## Is Pipeline Green?
 
-## Is Latest Kubernetes Version Supported?
+## Is Latest Kubernetes Version Supported?
 
 ## Fetch Tags and Diff
 
