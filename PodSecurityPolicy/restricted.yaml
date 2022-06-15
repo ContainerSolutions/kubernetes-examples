@@ -9,15 +9,8 @@ metadata:
   annotations:
     seccomp.security.alpha.kubernetes.io/allowedProfileNames: 'docker/default,runtime/default'
     apparmor.security.beta.kubernetes.io/allowedProfileNames: 'runtime/default'
-    seccomp.security.alpha.kubernetes.io/defaultProfileName: 'runtime/default'
     apparmor.security.beta.kubernetes.io/defaultProfileName: 'runtime/default'
 spec:
-  allowedHostPaths:
-    # This allows "/foo", "/foo/", "/foo/bar" etc., but
-    # disallows "/fool", "/etc/foo" etc.
-    # "/foo/../" is never valid.
-    - pathPrefix: "/foo"
-      readOnly: true  # only allow read-only mounts
   allowPrivilegeEscalation: false
   # This is redundant with non-root + disallow privilege escalation,
   # but we can provide it for defense in depth.
@@ -54,5 +47,7 @@ spec:
     - 'projected'
     - 'secret'
     - 'downwardAPI'
-    # Assume that persistentVolumes set up by the cluster admin are safe to use.
+    # Assume that ephemeral CSI drivers & persistentVolumes set up by the cluster admin are safe to use.
     - 'persistentVolumeClaim'
+    - 'csi'
+    - 'ephemeral'
