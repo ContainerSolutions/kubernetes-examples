@@ -98,5 +98,5 @@ setup_colors
 
 (
   cd ${abs_script_dir}/.. || exit 1
-  comm -3 <(find . | grep yaml$ | sort) <(cat .kubeconform-ignore | sort) | xargs -n1 kubeconform --strict -ignore-missing-schemas -kubernetes-version $k8s_version
+  comm -3 <(find . | grep yaml$ | sort) <(cat .kubeconform-ignore | sort) | xargs -n1 kubeconform --strict -kubernetes-version $k8s_version -ignore-filename-pattern 'Istio/*' -schema-location default -schema-location "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master/customresourcedefinition.json" -ignore-filename-pattern 'PodSecurityPolicy/*'
 )
