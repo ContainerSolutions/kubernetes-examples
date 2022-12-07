@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox-static
+spec:
+  containers:
+  - name: busybox-static-container
+    image: busybox
+    ports:
+    - containerPort: 80
+
+# this yml file must be placed in the `/etc/kubernetes/manifests` directory or your static manifest directory of choice
