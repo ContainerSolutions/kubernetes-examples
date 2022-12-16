@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: autoscaler-example
+  namespace: autoscale-eg
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: autoscaler-example
+  template:
+    metadata:
+      labels:
+        app: autoscaler-example
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.19.1
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: 500m
+          requests:
+            cpu: 200m
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: autoscaler-service
+  labels:
+    app: autoscaler-example
+spec:
+  ports:
+  - port: 80
+  selector:
+    app: autoscaler-example
