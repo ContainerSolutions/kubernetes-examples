@@ -4,7 +4,7 @@ kind: Plugin
 metadata:
   name: examples
 spec:
-  version: "v0.0.2"
+  version: "v0.0.3"
   homepage: https://github.com/ContainerSolutions/kubernetes-examples
   shortDescription: "Prints sample manifests"
   description: |
