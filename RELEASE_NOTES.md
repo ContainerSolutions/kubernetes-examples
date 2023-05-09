@@ -1,5 +1,28 @@
 # Release Notes
 
+## v0.0.5
+
+- v1.27.0
+- v1.26.0
+- v1.25.0
+- v1.24.0
+- v1.23.0
+- v1.22.0
+- v1.21.0
+
+### Changes
+
+#### Removed Examples
+
+- PodSecurityPolicy/Ingress/simple.yaml
+- PodSecurityPolicy/pod-security-policy.yaml
+- PodSecurityPolicy/restricted.yaml
+- PodSecurityPolicy/spec.privileged/privileged.yaml
+
+#### Other Changes
+
+- Updated list of supported Kubernetes versions
+
 ## v0.0.4
 
 Supported Kubernetes versions:
