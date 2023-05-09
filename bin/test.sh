@@ -102,6 +102,5 @@ setup_colors
     | xargs -n1 kubeconform --strict -kubernetes-version $k8s_version \
     -ignore-filename-pattern 'Istio/*' \
     -schema-location default \
-    -schema-location "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master/customresourcedefinition.json" \
-    -ignore-filename-pattern 'PodSecurityPolicy/*'
+    -schema-location "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master/customresourcedefinition.json"
 )
