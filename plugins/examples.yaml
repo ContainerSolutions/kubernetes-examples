@@ -4,7 +4,7 @@ kind: Plugin
 metadata:
   name: examples
 spec:
-  version: "v0.0.4"
+  version: "v0.0.5"
   homepage: https://github.com/ContainerSolutions/kubernetes-examples
   shortDescription: "Prints sample manifests"
   description: |
@@ -29,8 +29,8 @@ spec:
             values:
               - darwin
               - linux
-      uri: https://github.com/ContainerSolutions/kubernetes-examples/releases/download/v0.0.4/examples.tar.gz
-      sha256: b195c90188b9fd17f688d331bb93988524cf45b40d1f6bbacc0bd1a1e74b0027
+      uri: https://github.com/ContainerSolutions/kubernetes-examples/releases/download/v0.0.5/examples.tar.gz
+      sha256: 5dc4960ede8aae63a3f0149b14f65a487a1ebba1a9905cb881f6275e40eda26e
       files:
         - from: "*"
           to: "."
