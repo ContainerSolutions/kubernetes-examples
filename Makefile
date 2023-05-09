@@ -22,3 +22,9 @@ ci: tgz fix-sha fix-version
 clean:
 	@rm -f examples.tar.gz
 	@kubectl krew uninstall examples || :
+
+install_deprecations:
+	@kubectl krew install deprecations
+
+check_deprecations:
+	@tests/api_check.sh
