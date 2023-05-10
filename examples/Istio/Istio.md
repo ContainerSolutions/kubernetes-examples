@@ -1,7 +1,7 @@
 ---
 layout: default
 parent: Examples
-title: PodSecurityPolicy
+title: Istio
 nav_order: 2
 has_siblings: true
 ---

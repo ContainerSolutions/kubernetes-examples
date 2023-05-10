@@ -10,7 +10,7 @@ print-example() {
   dir=$(dirname $(readlink $BASH_SOURCE))
   debug "dir=${dir}"
 
-  command fzf --version >/dev/null && FZF_INSTALLED=true
+  command fzf --version >/dev/null 2>/dev/null && FZF_INSTALLED=true
 
   if [[ $res == "" ]]; then
     if [[ $FZF_INSTALLED ]];then
@@ -60,7 +60,9 @@ print-example() {
       ;;
   esac
 
-  cat ${yaml}
+  if [ -f ${yaml} ]; then 
+    cat ${yaml}
+  fi
 }
 
 main() {

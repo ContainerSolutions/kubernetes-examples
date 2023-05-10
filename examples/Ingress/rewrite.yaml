@@ -1,5 +1,5 @@
 ---
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-rewrite
@@ -12,5 +12,7 @@ spec:
           - path: /rewritepath
             pathType: Prefix
             backend:
-              serviceName: testsvc
-              servicePort: 80
+              service:
+                name: testsvc
+                port:
+                  number: 80

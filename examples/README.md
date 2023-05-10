@@ -5,6 +5,8 @@ A reference repository of YAML with canonical and as-simple-as-possible demonstr
 
 See here for a searchable front-end: https://k8s-examples.container-solutions.com/
 
+![Kubernetes Examples](logo.png)
+
 ## Why?
 
 At Container Solutions we find we regularly need chunks of YAML to  demonstrate something specific, such as:
@@ -76,6 +78,10 @@ The examples seek to be:
 
 - Clear (eg resource names are verbose and unambiguous)
 
+## Release Process
+
+See [here](RELEASE_PROCESS.md)
+
 ## Sources / Thanks To
 
 [Official Kubernetes docs](https://kubernetes.io/docs/)
@@ -85,3 +91,4 @@ The examples seek to be:
 [Practical Kubernetes](https://github.com/kubernauts/practical-kubernetes-problems)
 
 [Security Examples](https://github.com/NodyHub/docker-k8s-resources/tree/master/k8s-pods)
+
