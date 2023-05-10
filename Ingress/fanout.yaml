@@ -1,5 +1,5 @@
 ---
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-fanout
@@ -12,9 +12,15 @@ spec:
         paths:
           - path: /path1
             backend:
-              serviceName: testsvc1
-              servicePort: 4201
+              service:
+                name: testsvc1
+                port:
+                  number: 4201
+            pathType: exact
           - path: /path2
             backend:
-              serviceName: testsvc2
-              servicePort: 4202
+              service:
+                name: testsvc2
+                port:
+                  number: 4202
+            pathType: exact

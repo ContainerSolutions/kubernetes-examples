@@ -1,0 +1,25 @@
+---
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: accept-external-tls
+spec:
+  host: external-host-a
+  trafficPolicy:
+    tls:
+      mode: SIMPLE
+---
+# NB: This establishes an mTLS connection with an upstream endpoint.
+# It's for _mesh-external_ endpoints; within the mesh Istio automatically establishes mTLS connections between pairs of sidecars.
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: mutual-external-tls
+spec:
+  host: external-host-a
+  trafficPolicy:
+    tls:
+      mode: MUTUAL
+      privateKey: /etc/certs/client_key.pem
+      clientCertificate: /etc/certs/client_certificiate.pem
+      caCertificates: /etc/certs/server_root_certificates.pem

@@ -1,0 +1,17 @@
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: error-injection
+spec:
+  hosts:
+    - service-a
+  http:
+    - fault:
+        abort:
+          httpStatus: 500
+          # percentage:
+          #   value: 100.0
+      route:
+        - destination:
+            host: service-a

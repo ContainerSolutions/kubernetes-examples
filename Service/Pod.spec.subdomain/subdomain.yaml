@@ -17,7 +17,7 @@
 # DNS serves an A or AAAA record at that name, pointing to the Pod's IP.
 # Both pods "subdomain-simple-pod-1" and "subdomain-simple-pod-2" can have their distinct A or AAAA records.
 
-Example:
+---
 apiVersion: v1
 kind: Service
 metadata:
