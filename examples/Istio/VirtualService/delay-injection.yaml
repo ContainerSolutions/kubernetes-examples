@@ -1,0 +1,17 @@
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: delay-injection
+spec:
+  hosts:
+    - service-a
+  http:
+    - fault:
+        delay:
+          fixedDelay: 10s
+          percentage:
+            value: 100.0
+      route:
+        - destination:
+            host: service-a

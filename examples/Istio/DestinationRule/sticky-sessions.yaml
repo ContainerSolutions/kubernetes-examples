@@ -1,0 +1,35 @@
+---
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: sticky-sessions-user-cookie
+spec:
+  host: service-a
+  trafficPolicy:
+    loadBalancer:
+      consistentHash:
+        httpCookie:
+          name: user
+          ttl: 0s
+---
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: sticky-sessions-user-header
+spec:
+  host: service-a
+  trafficPolicy:
+    loadBalancer:
+      consistentHash:
+        httpHeaderName: x-remote-user
+---
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: sticky-sessions-source-ip
+spec:
+  host: service-a
+  trafficPolicy:
+    loadBalancer:
+      consistentHash:
+        useSourceIp: true

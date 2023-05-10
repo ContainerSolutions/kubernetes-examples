@@ -1,0 +1,34 @@
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: split-between-services
+spec:
+  hosts:
+    - service-a
+  http:
+    - route:
+        - weight: 90
+          destination:
+            host: service-a-current
+        - weight: 10
+          destination:
+            host: service-a-next
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: split-between-subsets
+spec:
+  hosts:
+    - service-a
+  http:
+    - route:
+        - weight: 90
+          destination:
+            host: service-a
+            subset: v1
+        - weight: 10
+          destination:
+            host: service-a
+            subset: v2

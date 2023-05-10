@@ -1,9 +1,11 @@
 ---
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: test-ingress
 spec:
-  backend:
-    serviceName: testsvc
-    servicePort: 80
+  defaultBackend:
+    service:
+      name: testsvc
+      port:
+        number: 80
