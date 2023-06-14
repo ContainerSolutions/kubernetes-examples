@@ -39,7 +39,7 @@ print-example() {
       ;;
     1)
       debug "exact match"
-      yaml=${dir}/${res}*/**/*${pattern}*.yaml
+      yaml=${dir}/${res}/**/*${pattern}*.yaml
       ;;
     *)
       debug "multiple choice"
