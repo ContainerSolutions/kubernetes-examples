@@ -10,5 +10,5 @@ spec:
       restartPolicy: Never
       containers:
         - command: ["perl", "-Mbignum=bpi", "-wle", "print bpi(2000)"]
-          image: perl
+          image: perl:5.34.0
           name: jobs-simple-container
