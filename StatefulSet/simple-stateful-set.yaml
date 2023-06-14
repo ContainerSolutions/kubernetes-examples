@@ -47,4 +47,4 @@ spec:
         resources:
           requests:
             storage: 1Gi
-        storageClassName: "my-storage-class"
+        storageClassName: "my-storage-class" # make sure to use correct storageClass that exists in your cluster!
