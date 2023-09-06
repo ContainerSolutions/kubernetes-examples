@@ -19,9 +19,9 @@ spec:
           command:
             - /bin/sh
             - -c
-            #- export A=$(echo $POD_IP | tr '.' '-' | sed 's/$/.q-connector.pod.cluster.local/g') && echo ${A}
+            # - export A=$(echo $POD_IP | tr '.' '-' | sed 's/$/.q-connector.pod.cluster.local/g') && echo ${A}
             - sleep 3600
-          #securityContext:
-          #  capabilities:
-          #    add:
-          #      - CAP_SYS_ADMIN
+          # securityContext:
+          #   capabilities:
+          #     add:
+          #       - CAP_SYS_ADMIN
