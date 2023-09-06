@@ -1,0 +1,55 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hpa-simple-deployment
+spec:
+  selector:
+    matchLabels:
+      run: hpa-simple-deployment
+  template:
+    metadata:
+      labels:
+        run: hpa-simpl-deployment
+    spec:
+      containers:
+      - name: hpa-simple-deployment
+        image: registry.k8s.io/hpa-example
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: 500m
+          requests:
+            cpu: 200m
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hpa-simple-service
+  labels:
+    run: hpa-simple-service
+spec:
+  ports:
+  - port: 80
+  selector:
+    run: hpa-simple-service
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpa-simple-hpa
+spec:
+  maxReplicas: 10
+  metrics:
+  - resource:
+      name: cpu
+      target:
+        averageUtilization: 50
+        type: Utilization
+    type: Resource
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: hpa-simple-deployment
