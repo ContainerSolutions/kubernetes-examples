@@ -10,7 +10,7 @@ spec:
   template:
     metadata:
       labels:
-        run: hpa-simpl-deployment
+        run: hpa-simple-deployment
     spec:
       containers:
       - name: hpa-simple-deployment
