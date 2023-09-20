@@ -27,11 +27,11 @@ spec:
             - name: DATABASE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: database_secrets
+                  name: database-secrets
                   key: password
             # Load from a configMap
             - name: KAFKA_TOPIC
               valueFrom:
                 configMapKeyRef:
-                  name: kafka_config_map
+                  name: kafka-config-map
                   key: topic
