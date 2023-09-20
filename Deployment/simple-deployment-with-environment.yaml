@@ -1,4 +1,19 @@
 ---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kafka-config-map
+data:
+  topic: kafka-config-map-topic
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: database-secrets
+type: Opaque
+data:
+  password: cGFzc3dvcmQ=  # password here is 'password' in base64
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
