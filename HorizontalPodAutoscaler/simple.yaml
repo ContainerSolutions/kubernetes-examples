@@ -1,3 +1,6 @@
+# To test this, run
+#   kubectl run -i --tty load-generator --rm --image=nginx --restart=Never -- /bin/sh -c "while sleep 0.001; do curl -v $(kubectl get service -o yaml hpa-simple-service -o=jsonpath={.spec.clusterIP}); done"
+# Wait 5 minutes for the default 'cool-down period' to take effect.
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -45,7 +48,7 @@ spec:
     - resource:
         name: cpu
         target:
-          averageUtilization: 50
+          averageUtilization: 1
           type: Utilization
       type: Resource
   minReplicas: 1
