@@ -1,0 +1,42 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: persistent-volume
+spec:
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 1Mb
+  hostPath:
+    path: /tmp
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: persistent-volume-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Mb
+  selector:
+    matchLabels:
+      pv: persistent-volume
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-persistent-volume
+spec:
+  containers:
+    - name: pod-persistent-volume-container
+      image: nginx
+      volumeMounts:
+        - mountPath: /usr/share/nginx/html
+          name: pod-persistent-volume-volume
+  volumes:
+    - name: pod-persistent-volume-volume
+      persistentVolumeClaim:
+        claimName: persistent-volume-claim
