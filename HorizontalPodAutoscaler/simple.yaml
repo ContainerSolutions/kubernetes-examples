@@ -9,14 +9,14 @@ metadata:
 spec:
   selector:
     matchLabels:
-      run: hpa-simple-deployment
+      app: hpa-simple-deployment-app
   template:
     metadata:
       labels:
-        run: hpa-simple-deployment
+        app: hpa-simple-deployment-app
     spec:
       containers:
-        - name: hpa-simple-deployment
+        - name: hpa-simple-deployment-container
           image: registry.k8s.io/hpa-example
           ports:
             - containerPort: 80
@@ -29,14 +29,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: hpa-simple-service
-  labels:
-    run: hpa-simple-service
+  name: hpa-simple-deployment-service
 spec:
   ports:
     - port: 80
   selector:
-    run: hpa-simple-service
+    app: hpa-simple-deployment-app
 ---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
