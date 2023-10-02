@@ -3,7 +3,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: stateful-service-persistent-volume
+  name: stateful-set-shared-pv-volume
 spec:
   accessModes:
     - ReadWriteOnce
@@ -15,7 +15,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: stateful-service-persistent-volume-claim
+  name: statefule-set-shared-pv-claim
 spec:
   accessModes:
     - ReadWriteOnce
@@ -24,7 +24,7 @@ spec:
       storage: 1M
   selector:
     matchLabels:
-      pv: stateful-service-persistent-volume
+      pv: stateful-set-shared-pv-volume
 ---
 apiVersion: v1
 kind: Service
@@ -58,16 +58,16 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
         - image: nginx
-          name: nginx
+          name: state-set-shared-pv-nginx
           ports:
             - containerPort: 80
               name: web
           volumeMounts:
             - mountPath: /usr/share/nginx/html
-              name: stateful-service-volume
+              name: stateful-set-volume
   volumeClaimTemplates:
     - metadata:
-        name: stateful-service-volume
+        name: stateful-set-volume
       spec:
         accessModes: ["ReadWriteMany"]
         resources:
