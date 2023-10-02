@@ -7,7 +7,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   capacity:
-    storage: 1Mb
+    storage: 1M
   hostPath:
     path: /tmp
 ---
@@ -20,7 +20,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 1Mb
+      storage: 1M
   selector:
     matchLabels:
       pv: persistent-volume
