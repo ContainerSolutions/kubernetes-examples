@@ -6,7 +6,7 @@ metadata:
   name: stateful-set-shared-pv-volume
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   capacity:
     storage: 1M
   hostPath:
@@ -18,7 +18,7 @@ metadata:
   name: stateful-set-shared-pv-claim
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 1M
@@ -65,11 +65,7 @@ spec:
           volumeMounts:
             - mountPath: /usr/share/nginx/html
               name: stateful-set-volume
-  volumeClaimTemplates:
-    - metadata:
-        name: stateful-set-volume
-      spec:
-        accessModes: ["ReadWriteMany"]
-        resources:
-          requests:
-            storage: 1M
+      volumes:
+        - name: stateful-set-volume
+          persistentVolumeClaim:
+            claimName: stateful-set-shared-pv-claim
