@@ -43,7 +43,7 @@ spec:
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: simple-stateful-set
+  name: stateful-set-shared-pv-stateful-set
 spec:
   replicas: 3  # the default is 1
   selector:
