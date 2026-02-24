@@ -15,6 +15,6 @@ spec:
           command:
             - cat
             - /tmp/healthy
-        initialDelaySeconds: 5
-        periodSeconds: 5
+        initialDelaySeconds: 6
+        periodSeconds: 6
       name: pods-liveness-exec-container
