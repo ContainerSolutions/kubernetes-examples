@@ -6,7 +6,7 @@ metadata:
 spec:
   containers:
     - command:
-        - sleep
+      - sleep
         - "3600"
       image: busybox
       name: pods-simple-container
